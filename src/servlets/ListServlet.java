@@ -19,17 +19,19 @@ import model.Category;
  * Servlet implementation class ListServlet
  */
 public class ListServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ListServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,12 +43,12 @@ public class ListServlet extends HttpServlet {
         request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
-
-
-
-
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List <Amount> amountList = PaymentDao.getInstance().getAmountList();
@@ -62,10 +64,6 @@ public class ListServlet extends HttpServlet {
         Category category = PaymentDao.getInstance().getCategoryByName(categoryParam);
 
         amountList.add(new Amount(nameParam, amountParam, category));
-
-
-
-
         response.sendRedirect("list");
     }
 

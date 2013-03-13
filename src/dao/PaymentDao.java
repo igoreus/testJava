@@ -53,12 +53,5 @@ public class PaymentDao {
             }
         }
         return selectedCategory;
-
-
-
     }
-
-
-
-
 }

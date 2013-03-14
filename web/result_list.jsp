@@ -11,6 +11,8 @@
          import="model.Category"
          import="model.Amount"
         %>
+<%@ taglib uri="/WEB-INF/tlds/SimpleTag.tld" prefix="ct" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +20,9 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h2>Payments List</h2>
+<ct:Hello message="This is simple message" />
+
+<h2>Payments List!</h2>
 <% List <Category> categoryList = (List <Category>) request.getAttribute("categoryList"); %>
 <% List <Amount> amountList = (List <Amount>) request.getAttribute("amountList"); %>
 
@@ -29,8 +33,6 @@
         <td><%=amount.getCategory() %></td>
         <td><%=amount.getName() %></td>
         <td><%=amount.getAmount() %></td>
-
-
     </tr>
 
     <% } %>
